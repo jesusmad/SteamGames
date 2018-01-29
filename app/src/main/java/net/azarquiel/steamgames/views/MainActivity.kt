@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import net.azarquiel.steamgames.R
+import net.azarquiel.steamgames.api.GameRequest
 import net.azarquiel.steamgames.api.ListRequest
+import net.azarquiel.steamgames.models.Game
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.indeterminateProgressDialog
 import org.jetbrains.anko.uiThread
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var appsmap : HashMap<Int, String>
+    private var game = Game()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +32,14 @@ class MainActivity : AppCompatActivity() {
 
             uiThread {
                 progress.hide()
-                appsmap.forEach { if (it.value.equals("Tropico 4")) Log.d(TAG, "AppID: ${it.key} - AppName: ${it.value}")}
-                Log.d(TAG, "Number of Apps: ${appsmap.count()}")
+            }
+        }
+
+        doAsync {
+            val gamerequest = GameRequest(57690)
+            game = gamerequest.game
+            uiThread {
+                Log.d(TAG, "Game: ${game.name} - Description: ${game.description}")
             }
         }
 
