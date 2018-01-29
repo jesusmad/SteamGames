@@ -18,5 +18,7 @@ class GameRequest(var appid: Int) {
         val jsonurl = "http://store.steampowered.com/api/appdetails?appids=${appid}&cc=es&l=spanish"
         val gameinfojson = URL(jsonurl).readText(charset("UTF-8"))
         val gameinforesponse = Gson().fromJson(gameinfojson, GameResponse::class.java)
+        val data = gameinforesponse.base.data
+        game = Game(appid, data.name, data.short_description, data.header_image, data.website)
     }
 }

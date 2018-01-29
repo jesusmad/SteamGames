@@ -5,13 +5,14 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by jr on 29-Jan-18.
  */
-//LIST
+//List
 data class ListResponse(var applist: AppList)
 data class AppList(var apps: List<Apps>)
 data class Apps(var appid: Int, var name: String)
 
-//APPDetail
-data class GameResponse(var data: Data)
+//AppDetail
+data class GameResponse(@SerializedName("57690")var base: Base)
+data class Base(var data: Data)
 data class Data(
         var name: String,
         var short_description: String,
