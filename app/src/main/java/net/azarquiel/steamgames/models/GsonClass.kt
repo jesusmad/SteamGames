@@ -11,8 +11,7 @@ data class AppList(var apps: List<Apps>)
 data class Apps(var appid: Int, var name: String)
 
 //AppDetail
-data class GameResponse(@SerializedName("57690")var base: Base)
-data class Base(var data: Data)
+data class GameResponse(var data: Data)
 data class Data(
         var name: String,
         var short_description: String,
