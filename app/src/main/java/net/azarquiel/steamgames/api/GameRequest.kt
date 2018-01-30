@@ -1,20 +1,16 @@
 package net.azarquiel.steamgames.api
 
-import android.util.Log
 import com.google.gson.Gson
 import net.azarquiel.steamgames.models.Game
 import net.azarquiel.steamgames.models.GameResponse
-import net.azarquiel.steamgames.views.MainActivity
 import java.net.URL
-import net.azarquiel.steamgames.util.ConvertJsonToObject
-import org.json.JSONArray
 import org.json.JSONObject
 
 
 /**
  * Created by jr on 29-Jan-18.
  */
-class GameRequest(var appid: Int) {
+class GameRequest(appid: Int) {
 
     var game = Game()
 

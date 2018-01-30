@@ -16,5 +16,6 @@ class ListRequest(jsonurl: String) {
         val listjson = URL(jsonurl).readText(charset("UTF-8"))
         val listresponse = Gson().fromJson(listjson, ListResponse::class.java)
         listresponse.applist.apps.forEach { appsmap.put(it.appid, it.name) }
+
     }
 }
